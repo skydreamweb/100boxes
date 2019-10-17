@@ -56,3 +56,14 @@ for (let i = 0; i < 10; i += 1) {
         canvas.add(row);
     }
 }
+// Array of possible combinations to add to / substract from clicked field[x, y]
+const coordinate = [
+    [-3, 0],
+    [3, 0],
+    [0, -3],
+    [0, 3],
+    [2, 2],
+    [-2, -2],
+    [2, -2],
+    [-2, 2]
+];
