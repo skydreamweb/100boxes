@@ -57,7 +57,7 @@ for (let i = 0; i < 10; i += 1) {
     }
 }
 // Array of possible combinations to add to / substract from clicked field[x, y]
-const coordinate = [
+const coordinates = [
     [-3, 0],
     [3, 0],
     [0, -3],
@@ -85,3 +85,48 @@ let gameOver = function () {
     // Stop timer - setInterval from gameStart function
     clearInterval(int1);
 };
+
+// Setting 2 functions - First Click and any other Regular Click
+// First Click function
+let firstClick = function (e, clickedField) {
+    // First click add to counter
+    counterClick += 1;
+    // On hover change cursor to pointer
+    clickedField.hoverCursor = 'pointer';
+    // Fill field green color
+    clickedField.set('fill', 'green');
+    // Change default "white" value of color property to green
+    clickedField.color = 'green';
+
+    // Array of all affected fields around clickedField
+    const affectedFields = [];
+
+    // For loop trough coordinates array
+    for (let i = 0; i < coordinates.length; i += 1) {
+        // X coordinate = clickedField.x coordinate + first value of each array of coordinates array
+        const x = clickedField.x + affectedCombos[i][0];
+        // Y coordinate = clickedField.y coordinate + second value of each array of coordinates array
+        const y = clickedField.y + affectedCombos[i][1];
+
+        // Push object in array with properties x/y and value of coordinates
+        affectedFields.push({
+            x,
+            y
+        });
+    }
+    // For loop trough all of 100 objects
+    for (let i = 0; i < e.target.canvas._objects.length; i += 1) {
+        // For loop trough affectedFields array
+        for (let j = 0; j < affectedFields.length; j++) {
+            // If any of 100 object has the same x/y like objects in affectedFields
+            if (e.target.canvas._objects[i].x === affectedFields[j].x &&
+                e.target.canvas._objects[i].y === affectedFields[j].y) {
+                // Fill yellow and change color propety to yellow
+                e.target.canvas._objects[i].set('fill', 'yellow');
+                e.target.canvas._objects[i].color = 'yellow';
+            }
+        }
+    }
+    // Renders both the top canvas and the secondary container canvas.
+    canvas.renderAll();
+}
