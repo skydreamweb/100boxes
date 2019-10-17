@@ -1,0 +1,26 @@
+{
+  "name": "100boxes",
+  "version": "1.0.0",
+  "description": "Canvas game",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skydreamweb/100boxes.git"
+  },
+  "keywords": [
+    "FabricJS",
+    "Canvas"
+  ],
+  "author": "Dalibor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skydreamweb/100boxes/issues"
+  },
+  "homepage": "https://github.com/skydreamweb/100boxes#readme",
+  "devDependencies": {
+    "eslint": "^6.5.1"
+  }
+}
