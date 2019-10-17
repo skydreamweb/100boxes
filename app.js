@@ -14,3 +14,45 @@ let gameStage = 'pre-game';
 let counterTime = 0;
 let counterClick = 0;
 let int1 = 0;
+
+// Timer function
+let timer = function () {
+    document.getElementById("time").innerHTML = counterTime;
+}
+
+// Score function
+let score = function () {
+    document.getElementById("result").innerHTML = counterClick;
+}
+
+// Create grid 10*10
+for (let i = 0; i < 10; i += 1) {
+    for (let j = 0; j < 10; j += 1) {
+
+        let rowOptions = {
+            width: 60,
+            height: 60,
+            top: 60 * i,
+            left: 60 * j,
+            rx: 5,
+            ry: 5,
+            hasControls: false,
+            stroke: '#eee',
+            fill: '#fbfcf2',
+            lockMovementX: true,
+            lockMovementY: true,
+            hoverCursor: 'pointer',
+            x: j + 1,
+            y: i + 1,
+            idCColor: 'blank',
+            idRColor: 'blank',
+            color: 'white'
+        };
+
+        // Rectangle class
+        let row = new fabric.Rect(rowOptions);
+
+        // Adds objects to collection, Canvas or Group, then renders canvas 
+        canvas.add(row);
+    }
+}
