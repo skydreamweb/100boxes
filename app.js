@@ -1,11 +1,12 @@
 // Reference canvas element (with id="c")
 const canvas = new fabric.Canvas("c");
+console.log("hello");
 
 // Sets width of this canvas instance
-canvas.setWidth(601);
+canvas.setWidth(501);
 
 //Sets height of this canvas instance
-canvas.setHeight(601);
+canvas.setHeight(501);
 
 // Define 'pre-game' status
 let gameStage = 'pre-game';
@@ -15,12 +16,12 @@ let counterTime = 0;
 let counterClick = 0;
 let int1 = 0;
 
-// Timer function
+// Timer function print in HTML
 let timer = function () {
     document.getElementById("time").innerHTML = counterTime;
 }
 
-// Score function
+// Score function print in HTML
 let score = function () {
     document.getElementById("result").innerHTML = counterClick;
 }
@@ -30,10 +31,10 @@ for (let i = 0; i < 10; i += 1) {
     for (let j = 0; j < 10; j += 1) {
 
         let rowOptions = {
-            width: 60,
-            height: 60,
-            top: 60 * i,
-            left: 60 * j,
+            width: 50,
+            height: 50,
+            top: 50 * i,
+            left: 50 * j,
             rx: 5,
             ry: 5,
             hasControls: false,
@@ -185,3 +186,15 @@ let regularClick = function (e, clickedField) {
         gameOver(e.target);
     }
 }
+// Click events and start game
+canvas.on('mouse:down', function (e) {
+    if (gameStage === 'pre-game') {
+        gameStart();
+        // Passing e.target to clickedField argument of firstClick function
+        firstClick(e, e.target);
+    } else if (gameStage === 'in-game') {
+        // Passing e.target to clickedField argument of regularClick function
+        regularClick(e, e.target);
+    }
+    canvas.renderAll();
+});
