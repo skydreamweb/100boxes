@@ -67,3 +67,13 @@ const coordinate = [
     [2, -2],
     [-2, 2]
 ];
+
+// Game start function - Change game status - Time / Score counter
+let gameStart = function () {
+    gameStage = 'in-game';
+    int1 = setInterval(() => {
+        counterTime += 1;
+        timer();
+        score();
+    }, 1000);
+}
