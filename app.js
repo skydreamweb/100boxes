@@ -77,3 +77,11 @@ let gameStart = function () {
         score();
     }, 1000);
 }
+
+// Game over function - Change game status
+let gameOver = function () {
+    gameStage = 'game-over';
+
+    // Stop timer - setInterval from gameStart function
+    clearInterval(int1);
+};
